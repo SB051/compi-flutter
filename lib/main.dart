@@ -1,3 +1,5 @@
+import 'package:compi/Pages/Home/home.dart';
+import 'package:compi/index.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -30,7 +32,17 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   bool loginState = false;
 
+  final Homepage _homepage = Homepage();
+  final Index _index = Index();
+
   @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(milliseconds: 500), () {
+      //_index.MyIndex(context: context);
+    });
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -85,7 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 )
         ],
       ),
-      body: Center(),
+      body: _homepage.HomePageLayout(context),
     );
   }
 }
