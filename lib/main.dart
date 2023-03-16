@@ -23,12 +23,13 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(),
       home: const MyHomePage(title: 'Compi'),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
@@ -42,11 +43,16 @@ class _MyHomePageState extends State<MyHomePage> {
   final Homepage _homepage = Homepage();
   final Index _index = Index();
 
+  void st() {
+    setState(() {});
+  }
+
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(milliseconds: 500), () {
+    Future.delayed(const Duration(milliseconds: 500), () {
       //_index.MyIndex(context: context);
+      _index.st = st;
     });
   }
 
@@ -60,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ..style = PaintingStyle.stroke
               ..strokeWidth = 1
               ..color = Colors.black,
-            fontSize: 32,
+            fontSize: 36,
             fontFamily: 'Merienda',
             fontWeight: FontWeight.w700,
             //color: Colors.black,
@@ -71,12 +77,59 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         centerTitle: false,
         leadingWidth: 0,
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white,
         shadowColor: Colors.transparent,
         actions: [
+          SearchBox(context),
+          /*Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.search_rounded,
+                    size: 32,
+                    color: Color(0xFF606060),
+                  ))),*/
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: TextButton(
+                onPressed: () {},
+                child: const Text(
+                  "ภาพรวม",
+                  style: TextStyle(fontSize: 20, color: Color(0xFF606060)),
+                )),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: TextButton(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: const Text("ไม่สามารถเปลี่ยนภาษาได้"),
+                        content: const Text(
+                            "ยังไม่รองรับภาษาอื่นๆ ในขณะนี้ - Now still only support Thai language."),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: const Text("OK"),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
+                child: const Text(
+                  "ภาษาไทย",
+                  style: TextStyle(fontSize: 20, color: Color(0xFF606060)),
+                )),
+          ),
           loginState == false
               ? Padding(
-                  padding: const EdgeInsets.only(right: 8.0),
+                  padding: const EdgeInsets.only(left: 20.0, right: 8.0),
                   child: TextButton(
                       onPressed: () {
                         setState(() {
@@ -84,8 +137,8 @@ class _MyHomePageState extends State<MyHomePage> {
                         });
                       },
                       child: const Text(
-                        "Login",
-                        style: TextStyle(fontSize: 16),
+                        "ลงชื่อเข้าใช้",
+                        style: TextStyle(fontSize: 20),
                       )),
                 )
               : Padding(
@@ -106,5 +159,21 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: _homepage.HomePageLayout(context),
     );
+  }
+
+  Widget SearchBox(BuildContext context) {
+    return Container(
+        width: 300,
+        margin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 4),
+        child: const TextField(
+          style: TextStyle(color: Color(0xFF606060)),
+          decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              hintText: "Search",
+              suffixIcon: Icon(
+                Icons.search_rounded,
+                color: Color(0xFF606060),
+              )),
+        ));
   }
 }
