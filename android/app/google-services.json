@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "711674450653",
+    "project_id": "compi-fb2ba",
+    "storage_bucket": "compi-fb2ba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:711674450653:android:172125496b19c688e44134",
+        "android_client_info": {
+          "package_name": "com.example.compi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "711674450653-co7rbea18mgouglsmh52u4mph30aqumi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARa4CrPQrs30w25KXzOmyDWCjm2ohCRNk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "711674450653-co7rbea18mgouglsmh52u4mph30aqumi.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "711674450653-j9n6mb4nobp7i14v58b2td9ufpcb8ihj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.compi"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
