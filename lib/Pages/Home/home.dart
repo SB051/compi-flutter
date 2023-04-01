@@ -28,7 +28,7 @@ class Homepage {
                       // calculate the new scroll position based on the drag details
                       // and update the scroll position of the ListView accordingly
                       scrollPosition += details.delta.dy;
-                      _index.st();
+                      setState() {}
                     },
                     child: Container(
                         margin: EdgeInsets.only(top: 10),
@@ -55,24 +55,17 @@ class Homepage {
   }
 
   Widget Banner(BuildContext context) {
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        Center(
-          child: Transform.scale(
-            scale: MediaQuery.of(context).size.width / 1920,
-            child: Container(
-              height: 377.67,
-              width: 1920,
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(colors: [
-                const Color(0xFFFDD835),
-                const Color(0xFF0500FF).withOpacity(0.5)
-              ])),
-            ),
-          ),
-        ),
-        Center(
+    return Center(
+      child: Container(
+        //height: 377.67,
+        width: MediaQuery.of(context).size.width,
+        padding: EdgeInsets.symmetric(vertical: 80),
+        decoration: BoxDecoration(
+            gradient: LinearGradient(colors: [
+          const Color(0xFFFDD835),
+          const Color(0xFF0500FF).withOpacity(0.5)
+        ])),
+        child: Center(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -92,7 +85,7 @@ class Homepage {
             ],
           ),
         ),
-      ],
+      ),
     );
   }
 
